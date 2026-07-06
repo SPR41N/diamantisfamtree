@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Diamantis Oluşum Ağacı</title>
+    <style>
+        body { 
+            background-image: url('https://i.pinimg.com/564x/8a/22/60/8a2260e563a5bf0d998a1961af5635b1.jpg');
+            background-color: #0c0d12; 
+            color: #e2e8f0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            padding: 30px; 
+            margin: 0;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #1e293b;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #ffffff;
+            font-size: 28px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin: 0 0 10px 0;
+            text-shadow: 0 0 10px rgba(212,175,55,0.2);
+        }
+        .header p {
+            color: #64748b;
+            font-size: 14px;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        .tree { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 25px; 
+        }
+        .row { 
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            width: 100%; 
+        }
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .rank-label { 
+            text-align: center; 
+            color: #cbd5e1; 
+            font-size: 11px; 
+            font-weight: 700; 
+            letter-spacing: 2px; 
+            margin-bottom: 12px; 
+            text-transform: uppercase;
+            background: #1e293b;
+            padding: 4px 16px;
+            border-radius: 20px;
+            border: 1px solid #334155;
+        }
+        .card { 
+            background: #111827; 
+            border: 1px solid #374151; 
+            border-radius: 12px; 
+            padding: 15px; 
+            width: 160px; 
+            text-align: center; 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); 
+            position: relative; 
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: #4b5563;
+            transform: translateY(-2px);
+        }
+        .r20 { 
+            border-color: #5e9ccf; 
+            box-shadow: 0 0 15px rgba(212,175,55,0.15); 
+        }
+        .r20 .rank-label { background: #378dd4; color: #000; border: none; }
+        .r19 { 
+            border-color: #94a3b8; 
+            box-shadow: 0 0 15px rgba(148,163,184,0.1);
+        }
+        .avatar-upload { 
+            width: 70px; 
+            height: 70px; 
+            border-radius: 50%; 
+            background: #1f2937; 
+            margin: 0 auto 12px; 
+            cursor: pointer; 
+            background-size: cover; 
+            background-position: center; 
+            border: 2px solid #4b5563; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 16px; 
+            color: #9ca3af; 
+            transition: all 0.2s ease;
+        }
+        .avatar-upload:hover {
+            border-color: #9ca3af;
+            background: #374151;
+        }
+        .avatar-upload input { display: none; }
+        .name { 
+            font-size: 13px; 
+            font-weight: 600; 
+            color: #f3f4f6; 
+            min-height: 36px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            line-height: 1.3;
+        }
+        .role { 
+            font-size: 11px; 
+            color: #9ca3af; 
+            margin-top: 6px; 
+            border-top: 1px solid #1f2937; 
+            padding-top: 6px;
+            font-style: italic;
+        }
+        .empty { 
+            border: 1px dashed #4b5563; 
+            background: rgba(31, 41, 55, 0.2); 
+        }
+        .empty .name { color: #6b7280; }
+        .connector {
+            width: 2px;
+            height: 15px;
+            background: #334155;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>DIAMANTIS CORPORATION</h1>
+    <p></p>
+</div>
+
+<div class="tree">
+    <!-- R20 -->
+    <div class="row">
+        <div class="rank-label" style="background: #378dd4; color: #000; font-weight: bold;">R20 | Patéras</div>
+        <div class="card r20">
+            <label class="avatar-upload">➕<input type="file" onchange="preview(this)"></label>
+            <div class="name">Demos Diamantis</div>
+            <div class="role">Amca</div>
+        </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <!-- R19 -->
+    <div class="row">
+        <div class="rank-label" style="background: #94a3b8; color: #000; font-weight: bold;">R19 | Yérontas</div>
+        <div class="card r19">
+            <label class="avatar-upload">➕<input type="file" onchange="preview(this)"></label>
+            <div class="name">Vasilis Diamantis</div>
+            <div class="role">Kardeşi</div>
+        </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <!-- R18 -->
+    <div class="row">
+        <div class="rank-label">R18 | Stratigós & Sýmvoulos</div>
+        <div class="cards-container">
+            <div class="card">
+                <label class="avatar-upload">➕<input type="file" onchange="preview(this)"></label>
+                <div class="name">Leonidas Vlahos</div>
+                <div class="role">Stratigós</div>
+            </div>
+            <div class="card">
+                <label class="avatar-upload">➕<input type="file" onchange="preview(this)"></label>
+                <div class="name">Theron Stavrakis</div>
+                <div class="role">Sýmvoulos</div>
+            </div>
+            <div class="card empty">
+                <div style="height:70px; display:flex; align-items:center; justify-content:center; color: #4b5563; font-size: 20px;">?</div>
+                <div class="name">Boş Slot</div>
+                <div class="role">Fýlakas</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <!-- R17 -->
+    <div class="row">
+        <div class="rank-label">R17 | Kapetánios</div>
+        <div class="cards-container">
+            <div class="card">
+                <label class="avatar-upload">➕<input type="file" onchange="preview(this)"></label>
+                <div class="name">Alkis Zervas</div>
+                <div class="role">Kapetánios</div>
+            </div>
+            <div class="card empty">
+                <div style="height:70px; display:flex; align-items:center; justify-content:center; color: #4b5563; font-size: 20px;">?</div>
+                <div class="name">Boş Slot</div>
+                <div class="role">Fýlakas</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <!-- R16 -->
+    <div class="row">
+        <div class="rank-label">R16 | Adelfós</div>
+        <div class="cards-container">
+            <div class="card">
+                <label class="avatar-upload">➕<input type="file" onchange="preview(this)"></label>
+                <div class="name">Konstantinos Dimitro</div>
+                <div class="role">Adelfós</div>
+            </div>
+            <div class="card">
+                <label class="avatar-upload">➕<input type="file" onchange="preview(this)"></label>
+                <div class="name">Lucianos Theodorakis</div>
+                <div class="role">Adelfós</div>
+            </div>
+            <div class="card empty">
+                <div style="height:70px; display:flex; align-items:center; justify-content:center; color: #4b5563; font-size: 20px;">?</div>
+                <div class="name">Boş Slot</div>
+                <div class="role">Adelfós</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <!-- R15 -->
+    <div class="row">
+        <div class="rank-label">R15 | Fýlakas</div>
+        <div class="cards-container">
+            <div class="card">
+                <label class="avatar-upload">➕<input type="file" onchange="preview(this)"></label>
+                <div class="name">Ares Alexandros</div>
+                <div class="role">Fýlakas</div>
+            </div>
+            <div class="card">
+                <label class="avatar-upload">➕<input type="file" onchange="preview(this)"></label>
+                <div class="name">Thesus Dimitro</div>
+                <div class="role">Fýlakas</div>
+            </div>
+            <div class="card">
+                <label class="avatar-upload">➕<input type="file" onchange="preview(this)"></label>
+                <div class="name">Haizea</div>
+                <div class="role">Adelfós</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <!-- R14 - R12 Boş Alanlar -->
+    <div class="row">
+        <div class="rank-label" style="background: #111827; color: #6b7280;">Ara Rütbeler (R14 - R12)</div>
+        <div class="cards-container">
+            <div class="card empty" style="width: 120px; padding: 10px;">
+                <div style="font-size: 11px; font-weight: bold; color: #4b5563;">R14 | Émpistos</div>
+                <div style="font-size: 10px; color: #4b5563; margin-top: 5px;">BOŞ</div>
+            </div>
+            <div class="card empty" style="width: 120px; padding: 10px;">
+                <div style="font-size: 11px; font-weight: bold; color: #4b5563;">R13 | Polemistís</div>
+                <div style="font-size: 10px; color: #4b5563; margin-top: 5px;">BOŞ</div>
+            </div>
+            <div class="card empty" style="width: 120px; padding: 10px;">
+                <div style="font-size: 11px; font-weight: bold; color: #4b5563;">R12 | Néos</div>
+                <div style="font-size: 10px; color: #4b5563; margin-top: 5px;">BOŞ</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="connector"></div>
+
+    <!-- R11 -->
+    <div class="row">
+        <div class="rank-label">R11 | Honored</div>
+        <div class="cards-container">
+            <div class="card">
+                <label class="avatar-upload">➕<input type="file" onchange="preview(this)"></label>
+                <div class="name">Nikolaos Drakos</div>
+                <div class="role">Honored</div>
+            </div>
+            <div class="card">
+                <label class="avatar-upload">➕<input type="file" onchange="preview(this)"></label>
+                <div class="name">Arion Laskaris</div>
+                <div class="role">Honored</div>
+            </div>
+            <div class="card">
+                <label class="avatar-upload">➕<input type="file" onchange="preview(this)"></label>
+                <div class="name">Hectoras Galanis</div>
+                <div class="role">Honored</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function preview(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            input.parentElement.style.backgroundImage = 'url(' + e.target.result + ')';
+            input.parentElement.innerHTML = '';
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
+</body>
+</html>
